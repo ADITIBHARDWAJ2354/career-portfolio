@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact page for Aditi Bhardwaj's portfolio.">
+    <title>Contact Me</title>
+    <style>
+        body {
+            background-color: rgb(0, 0, 33);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(18, 18, 62);
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(18, 18, 62);
+            padding: 10px;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: rgb(154, 154, 233);
+        }
+
+        /* Centering the "Rate My Portfolio" text */
+        .center-heading {
+            text-align: center;
+        }
+
+        #contact {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+            background-color: rgb(18, 18, 62);
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: rgb(170, 107, 228);
+            text-decoration: none;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(170, 107, 228);
+            border-radius: 5px;
+            background: rgb(0, 0, 33);
+            color: white;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: rgb(170, 107, 228);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .contact-form button:hover {
+            background-color: rgb(150, 90, 200);
+        }
+
+        .rating-stars .star {
+            cursor: pointer;
+            color: gray;
+            transition: color 0.3s;
+        }
+
+        .rating-stars .star:hover,
+        .rating-stars .star.selected {
+            color: gold;
+        }
+
+        #rating-result.thank-you {
+            animation: glow 1.5s ease-in-out;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px gold;
+            }
+
+            50% {
+                text-shadow: 0 0 20px gold;
+            }
+
+            100% {
+                text-shadow: 0 0 5px gold;
+            }
+        }
+
+        .floating-rate-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgb(170, 107, 228);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(170, 107, 228, 0.6);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .floating-rate-btn:hover {
+            background-color: white;
+            color: rgb(170, 107, 228);
+            border: 2px solid rgb(170, 107, 228);
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="left">Aditi's Portfolio</div>
+        <div class="right">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact .html">Contact me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>If you have any questions or just want to say hello, feel free to reach out!</p>
+
+            <div class="contact-info">
+                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p>Phone: +1234567890</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a></p>
+            </div>
+
+            <form action="your-form-handler-url" method="POST" class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section class="secondsection" id="rate-me">
+            <span class="text-gray">What do you think?</span>
+            <h1 class="center-heading">Rate My Portfolio</h1>
+
+            <div class="rating-stars" style="text-align: center; font-size: 2rem; margin-top: 10px;">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+
+            <p id="rating-result" style="text-align:center; margin-top: 15px; color: rgb(170, 107, 228); font-size: 1.2rem;"></p>
+        </section>
+
+        <!-- Floating Button -->
+        <a href="#rate-me" class="floating-rate-btn">⭐ Rate Me</a>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                const result = document.getElementById('rating-result');
+
+                // Highlight selected stars
+                document.querySelectorAll('.star').forEach(s => {
+                    s.classList.remove('selected');
+                    if (s.getAttribute('data-value') <= value) {
+                        s.classList.add('selected');
+                    }
+                });
+
+                // Emoji feedback
+                const feedback = {
+                    1: "😐 Meh! I’ll improve!",
+                    2: "🙂 Okay! Thanks!",
+                    3: "😃 Nice! Glad you visited!",
+                    4: "🤩 Awesome! Thank you!",
+                    5: "🥰 You made my day!"
+                };
+
+                // Show message + animation
+                result.innerText = `You rated me ${value} star${value > 1 ? 's' : ''}. ${feedback[value]}`;
+                result.classList.add('thank-you');
+                setTimeout(() => result.classList.remove('thank-you'), 1500);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

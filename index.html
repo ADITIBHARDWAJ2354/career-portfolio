@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aditi Bhardwaj's portfolio showcasing her skills and projects.">
+    <title>Career Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        html,body {
+            overflow-x: hidden;
+        }
+        #about {
+            display: none; /* Hide by default */
+            padding: 40px;
+            background-color: rgb(18, 18, 62);
+            color: white;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        #about.show {
+            display: block; /* Show when 'show' class is added */
+        }
+
+        body {
+            background-color: rgb(0, 0, 33);
+            color: white;
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+            background-color: rgb(18, 18, 62);
+            padding: 0 20px;
+        }
+
+        nav.left {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 23px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: rgb(154, 154, 233);
+        }
+
+        hr {
+            border: 0;
+            background: rgb(170, 107, 228);
+            height: 1px;
+            margin: 40px 84px;
+        }
+
+
+
+        .left {
+            font-size: 1.5rem;
+
+        }
+
+
+        .firstsection {
+            display: flex;
+            justify-content: space-around;
+            margin: 80px 0;
+        }
+
+        .firstsection>div {
+            width: 30%;
+        }
+
+
+        .leftsection {
+            font-size: 2.4rem;
+        }
+
+        .rightsection img {
+            width: 80%;
+            border-radius: 8px;
+
+        }
+
+        .purple {
+            color: rgb(170, 107, 228);
+        }
+
+        .text-gray {
+            color: gray;
+            font-size: 1.2rem;
+            margin-left: 10%;
+        }
+
+        #element {
+            color: rgb(170, 107, 228);
+        }
+
+        .seconsection {
+            max-width: 80vw;
+            margin: auto;
+            height: 80vh;
+
+        }
+
+        .secondsection h1 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            margin-left: 10%;
+        }
+
+        .line-container {
+            margin: 20px auto;
+            position: relative;
+            width: 94%;
+            height: 200px;
+
+        }
+
+        .horizontal {
+            background: white;
+            width: 85%;
+            height: 1.5px;
+            margin: 0 auto;
+        }
+
+        .vertical-line,
+        .left-vertical-line,
+        .right-vertical-line {
+            background: white;
+            width: 1.5px;
+            height: 30%;
+            position: absolute;
+
+        }
+
+        .vertical-line {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .left-vertical-line {
+            left: 84px;
+            top: 0;
+            height: calc(100%-1.5px);
+        }
+
+        .right-vertical-line {
+            right: 82px;
+            top: 0;
+            height: calc(100%-1.5px);
+        }
+
+        .left-text,
+        .right-text {
+            position: absolute;
+            bottom: 50;
+            width: 40%;
+            transform: translateY(100%);
+
+        }
+
+        .left-text {
+            position: absolute;
+            left: 5%;
+            bottom: 70%;
+            width: 30%;
+            transform: translateY(100%);
+            text-align: left;
+        }
+
+        .right-text {
+            position: absolute;
+            left: 50%;
+            bottom: 70%;
+            width: 30%;
+            transform: translateX(-50%)translateY(100%);
+            text-align: center;
+        }
+
+        .graduation-text {
+            position: absolute;
+            left: 92%;
+            bottom: 70%;
+            width: 30%;
+            transform: translateX(-50%)translateY(100%);
+
+            text-align: center;
+            ;
+        }
+
+        .level-line {
+            border: 0;
+            border-top: 2px solid rgb(170, 107, 228);
+            margin: 20px auto;
+            width: 87%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .clickable {
+            cursor: pointer;
+            color: rgb(170, 107, 228);
+        }
+
+        .skills-content {
+            margin-top: 20px;
+            /* Space above the skills section */
+        }
+
+        .skills-content h2 {
+            font-size: 1.2rem;
+            /* Slightly smaller font size for section headings */
+            color: rgb(170, 107, 228);
+            margin-bottom: 10px;
+        }
+
+        .skill {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 1rem;
+            color: rgb(170, 107, 228);
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            background: rgba(170, 107, 228, 0.2);
+            border-radius: 5px;
+            height: 20px;
+            width: 100%;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .skill-progress {
+            background: rgb(170, 107, 228);
+            height: 100%;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .skill-level{
+            font-size:1rem;
+            color:white;
+        }
+        footer {
+    background-color: rgb(18, 18, 62);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: rgb(170, 107, 228);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+        
+
+    
+   </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Aditi's Portfolio</div>
+            <div class="right">
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact me</a></li>
+                    
+
+
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="firstsection">
+            <div class="leftsection">
+                Hi,my name is <span class="purple">Aditi Bhardwaj</span>
+                <div>and I am a passionate</div>
+
+                <span id="element"></span>
+
+            </div>
+            <div class="rightsection">
+                <img src="https://www.lingayasvidyapeeth.edu.in/sanmax/wp-content/uploads/2023/07/studentlife.webp"alt ="image">
+            </div>
+            
+            
+        </section>
+        <hr>
+
+        <section class="secondsection">
+            <span class="text-gray"> What i have done so far</span>
+            <h1>Education Details</h1>
+            <div class="line-container">
+                <div class="horizontal"></div>
+                <div class="vertical-line"></div>
+                <div class="left-vertical-line"></div>
+                <div class="right-vertical-line"></div>
+
+                <div class="left-text">
+                    <p id="toggle-10th" class="clickable">10th Class</p>
+
+                    <div id="details-10th" class="hidden">
+                        <p>Board:UP</p>
+                        <p>Percentage:73.6%</p>
+                        <p>Details:</p>
+                        <ul>
+                            <li>Achieved top grades in english</li>
+                            <li>Participated in school science fairs</li>
+                            <li>Member of the school's debate team</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-text">
+                    <p id="toggle-12th" class="clickable">12th Class</p>
+                    <div id="details-12th" class="hidden">
+                        <p>Board:UP</p>
+                        <p>Percentage:73.16%</p>
+                        <p>Details:</p>
+                        <ul>
+                            <li>Achieved top grades in Mathematics,Hindi and English</li>
+                            <li>I have PCM stream</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="graduation-text">
+                    <p id="toggle-graduation" class="clickable">Graduation</p>
+                    <div id="details-graduation" class="hidden">
+                        <p>University:CCSU</p>
+                        <P>Degree:BCA</P>
+                        <p>Details:</p>
+                        <Ul>
+                            <li>I got 73% marks in first year</li>
+                            <li>In second year also i got 73%marks</li>
+                        </Ul>
+                    </div>
+                </div>
+
+        </section>
+        <section class="secondsection" id="skills">
+            <hr class="level-line">
+            <span class="text-gray">My Skills</span>
+            <h1>Skill Matrix</h1>
+            <canvas id="skillsChart" width="400" height="200"></canvas>
+        </section>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                    <p>Phone: +1234567890</p>
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Follow Me</h3>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> |
+                    <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aditi Bhardwaj. All rights reserved.</p>
+            </div>
+        </footer>
+        
+    </main>
+
+    <!-- JavaScript to render the Chart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('skillsChart').getContext('2d');
+            
+            var skillsChart = new Chart(ctx, {
+                type: 'bar', // Bar chart type
+                data: {
+                    labels: ['HTML', 'CSS', 'JavaScript', 'Database Management', 'C/C++', 'Java'], // Skill names
+                    datasets: [{
+                        label: 'Skill Level (%)',
+                        data: [80, 85, 75, 60, 85, 80], // Skill levels in percentages
+                        backgroundColor: 'rgba(170, 107, 228, 0.5)', // Bar color
+                        borderColor: 'rgb(170, 107, 228)', // Border color
+                        borderWidth: 1,
+                        barThickness:85,
+                        categoryPercentage: 3.0, // Reduce space between bars
+                        barPercentage: 0.2, // Adjust space taken by each bar
+                    }]
+                },
+                options: {
+                    responsive: true, // Make the chart responsive
+                    scales: {
+                        y: {
+                            beginAtZero: true, // Start from 0
+                            max: 100, // Set max value to 100%
+                            ticks: {
+                                stepSize: 20 // Y-axis steps of 20%
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Hide the legend
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+
+            
+        
+            </div>
+        </section>
+        
+        
+        
+ </section>
+    </main>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Web developer', 'student'],
+            typeSpeed: 50,
+        });
+
+
+        document.getElementById('toggle-10th').addEventListener('click', function () {
+            var details = document.getElementById('details-10th');
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+            } else {
+                details.classList.add('hidden');
+            }
+        });
+        document.getElementById('toggle-12th').addEventListener('click', function () {
+            var details = document.getElementById('details-12th');
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+            } else {
+                details.classList.add('hidden');
+            }
+        });
+        document.getElementById('toggle-graduation').addEventListener('click', function () {
+            var details = document.getElementById('details-graduation');
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+            } else {
+                details.classList.add('hidden');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+    const skillBars = document.querySelectorAll('.skill-progress');
+
+    skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 100);
+    });
+});
+  
+
+    </script>
+</body>
+
+</html>
